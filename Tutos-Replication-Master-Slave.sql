@@ -9,8 +9,12 @@ sudo mysql_secure_installation
 Ouvrez le fichier de configuration ;
 sudo nano /etc/my.cnf.d/server.cnf
 Vous devrez avoir cette configuration;
- 
-Ensuite rédemarer mariadb;
+ [msqld]
+ log_bin =mysql-bin
+ server_i= 1
+ symbolic-likns = 0
+ !includedir /etc/my.cnf.d
+ Ensuite rédemarer mariadb;
 sudo systemctl restart mariadb
 Ensuite créer un user et donner les privillèges;
 CREATE USER 'replication_user'@'%' IDENTIFIED BY 'your_password';
